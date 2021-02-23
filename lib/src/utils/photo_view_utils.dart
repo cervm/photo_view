@@ -76,8 +76,8 @@ class ScaleBoundaries {
 
   double get initialScale {
     assert(_initialScale is double || _initialScale is PhotoViewComputedScale);
-    if (_initialScale == PhotoViewComputedScale.coveredUnlessWide) {
-      if (childSize.aspectRatio < 1) {
+    if (_initialScale == PhotoViewComputedScale.auto) {
+      if (childSize.aspectRatio < 1 == outerSize.aspectRatio < 1) {
         return _scaleForCovering(outerSize, childSize) *
             (_initialScale as PhotoViewComputedScale) // ignore: avoid_as
                 .multiplier;

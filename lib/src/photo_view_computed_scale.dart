@@ -15,8 +15,7 @@ class PhotoViewComputedScale {
 
   static const contained = const PhotoViewComputedScale._internal('contained');
   static const covered = const PhotoViewComputedScale._internal('covered');
-  static const coveredUnlessWide =
-      const PhotoViewComputedScale._internal('coveredUnlessWide');
+  static const auto = const PhotoViewComputedScale._internal('auto');
 
   PhotoViewComputedScale operator *(double multiplier) {
     return PhotoViewComputedScale._internal(_value, multiplier);
