@@ -76,6 +76,17 @@ class ScaleBoundaries {
 
   double get initialScale {
     assert(_initialScale is double || _initialScale is PhotoViewComputedScale);
+    if (_initialScale == PhotoViewComputedScale.coveredUnlessWide) {
+      if (childSize.aspectRatio < 1) {
+        return _scaleForCovering(outerSize, childSize) *
+            (_initialScale as PhotoViewComputedScale) // ignore: avoid_as
+                .multiplier;
+      } else {
+        return _scaleForContained(outerSize, childSize) *
+            (_initialScale as PhotoViewComputedScale) // ignore: avoid_as
+                .multiplier;
+      }
+    }
     if (_initialScale == PhotoViewComputedScale.contained) {
       return _scaleForContained(outerSize, childSize) *
           (_initialScale as PhotoViewComputedScale) // ignore: avoid_as
